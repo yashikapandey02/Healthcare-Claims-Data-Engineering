@@ -1,0 +1,4 @@
+DenialID,ClaimID,DenialReason,DenialDate
+D001,C002,Invalid ICD Code,2024-01-18
+D002,C004,Missing Prior Authorization,2024-02-01
+D003,C006,Duplicate Claim,2024-02-15

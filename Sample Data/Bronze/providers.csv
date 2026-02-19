@@ -1,0 +1,5 @@
+ProviderID,ProviderName,Specialty,NPI,City,State
+PR001,Dr Alan Roberts,Cardiology,1234567890,Phoenix,AZ
+PR002,Dr Emily Wong,Orthopedics,9876543210,Scottsdale,AZ
+PR003,Dr Sarah Patel,Internal Medicine,4567891230,Tempe,AZ
+PR004,Dr James Miller,Neurology,7418529630,Mesa,AZ

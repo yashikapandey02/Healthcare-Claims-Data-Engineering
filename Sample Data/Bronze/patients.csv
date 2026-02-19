@@ -1,0 +1,6 @@
+PatientID,FirstName,LastName,DOB,Gender,SSN,Address,City,State,Zip,Phone,Email
+P001,John,Doe,1985-04-12,M,123-45-6789,123 Main St,Phoenix,AZ,85001,6025551234,john.doe@email.com
+P002,Jane,Smith,1990-09-22,F,987-65-4321,456 Oak Ave,Tempe,AZ,85281,4805555678,jane.smith@email.com
+P003,Michael,Brown,1978-01-30,M,321-54-9876,789 Pine Rd,Scottsdale,AZ,85255,4805558899,michael.brown@email.com
+P004,Emily,Johnson,2000-07-15,F,654-32-1987,222 Maple St,Glendale,AZ,85301,6235557788,emily.johnson@email.com
+P005,David,Wilson,1965-11-05,M,741-85-9632,900 Desert Blvd,Mesa,AZ,85201,4805556677,david.wilson@email.com
