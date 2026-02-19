@@ -1,0 +1,225 @@
+{
+    "name": "RCM_Daily_Pipeline",
+    "objectId": "976862a8-0ae6-41ac-9cde-404d7e361b5f",
+    "properties": {
+        "description": "This pipeline orchestrates the end-to-end healthcare analytics workflow.\nIt refreshes Silver and Gold layers and updates the semantic model to ensure up-to-date reporting.\nScheduled for daily execution to simulate production-grade data refresh.",
+        "activities": [
+            {
+                "name": "DF_ClaimDenial_Bronze_to_Silver",
+                "type": "RefreshDataflow",
+                "dependsOn": [
+                    {
+                        "activity": "DF_claim_Bronze to Silver",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "dataflowId": "3a9357ca-afa6-4352-bdaf-95cdda90b905",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7",
+                    "notifyOption": "NoNotification",
+                    "dataflowType": "DataflowFabric"
+                }
+            },
+            {
+                "name": "DF_claim_Bronze to Silver",
+                "type": "RefreshDataflow",
+                "dependsOn": [
+                    {
+                        "activity": "DF_dailyfilecontrol_Bronze to Silver",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "dataflowId": "0a30a90d-3259-4794-bd27-bf840b33e199",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7",
+                    "notifyOption": "NoNotification",
+                    "dataflowType": "DataflowFabric"
+                }
+            },
+            {
+                "name": "DF_dailyfilecontrol_Bronze to Silver",
+                "type": "RefreshDataflow",
+                "dependsOn": [
+                    {
+                        "activity": "DF_Dates_Bronze to Silver",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "dataflowId": "cb2a4419-8cd4-4f02-a7d8-093f91e3897b",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7",
+                    "notifyOption": "NoNotification",
+                    "dataflowType": "DataflowFabric"
+                }
+            },
+            {
+                "name": "DF_Payments_Bronze to Silver",
+                "type": "RefreshDataflow",
+                "dependsOn": [
+                    {
+                        "activity": "DF_ClaimDenial_Bronze_to_Silver",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "dataflowId": "67ac5cc8-5866-4aa3-894f-114ece0b17a1",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7",
+                    "notifyOption": "NoNotification",
+                    "dataflowType": "DataflowFabric"
+                }
+            },
+            {
+                "name": "DF_Patients_Bronze to Silver",
+                "type": "RefreshDataflow",
+                "dependsOn": [
+                    {
+                        "activity": "DF_Providers_Bronze to Silver",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "dataflowId": "8c32ee1d-511e-4e08-aec9-3ef3880ce787",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7",
+                    "notifyOption": "NoNotification",
+                    "dataflowType": "DataflowFabric"
+                }
+            },
+            {
+                "name": "DF_Dates_Bronze to Silver",
+                "type": "RefreshDataflow",
+                "dependsOn": [
+                    {
+                        "activity": "DF_Patients_Bronze to Silver",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "dataflowId": "bb92336f-d4e1-4eb4-ac1e-5bb39ad10e3d",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7",
+                    "notifyOption": "NoNotification",
+                    "dataflowType": "DataflowFabric"
+                }
+            },
+            {
+                "name": "DF_Providers_Bronze to Silver",
+                "type": "RefreshDataflow",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "dataflowId": "048254cd-9352-4860-904c-ebb619c0806e",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7",
+                    "notifyOption": "NoNotification",
+                    "dataflowType": "DataflowFabric"
+                }
+            },
+            {
+                "name": "NB_Gold",
+                "type": "TridentNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "DF_Payments_Bronze to Silver",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "4eafb5a2-2102-456a-89fb-59f72a06a02d",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7"
+                }
+            },
+            {
+                "name": "NB Gold Validation",
+                "type": "TridentNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "NB_Gold",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "dafeb998-6020-46e8-a8d5-22b0c13b30a5",
+                    "workspaceId": "4095044c-a8cc-4303-8c6d-4572ac9302d7"
+                }
+            }
+        ],
+        "lastModifiedByObjectId": "9ace11eb-95d7-47c7-b0b4-c43e668a57fa",
+        "lastPublishTime": "2026-02-19T20:02:50Z"
+    }
+}
