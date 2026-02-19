@@ -1,0 +1,8 @@
+payment_id,claim_id,payment_date,paid_amount,payment_status
+PAY001,C001,2024-01-20,200,Paid
+PAY002,C002,2024-02-05,0,Denied
+PAY003,C003,2024-01-28,450,Paid
+PAY004,C004,2024-02-10,0,Denied
+PAY005,C005,2024-02-15,9800,Paid
+PAY006,C006,2024-02-25,0,Denied
+PAY007,C007,2024-02-08,260,Paid

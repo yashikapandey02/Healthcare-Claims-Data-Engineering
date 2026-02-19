@@ -1,0 +1,6 @@
+file_date,table_name,record_count,source_system
+2024-01-26,patients,5,RCM_SYS_01
+2024-01-26,providers,4,RCM_SYS_01
+2024-01-26,claims,7,RCM_SYS_01
+2024-01-26,payments,7,RCM_SYS_01
+2024-01-26,claim_denials,3,RCM_SYS_01
