@@ -1,0 +1,5 @@
+provider_key,provider_id,provider_name,specialty,city,state
+1,PR001,Dr Alan Roberts,Cardiology,Phoenix,AZ
+2,PR002,Dr Emily Wong,Orthopedics,Scottsdale,AZ
+3,PR003,Dr Sarah Patel,Internal Medicine,Tempe,AZ
+4,PR004,Dr James Miller,Neurology,Mesa,AZ
