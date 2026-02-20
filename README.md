@@ -4,3 +4,15 @@ This project implements an end-to-end data engineering solution in Microsoft Fab
 ## Architecture
 
 ![Architecture](./docs/Healthcare_Claims_Architecture.png)
+ ## Tech Stack
+
+| Category | Technology Used |
+|----------|-----------------|
+| Cloud Platform | Microsoft Fabric |
+| Storage | Lakehouse (Delta Tables) |
+| Data Processing | PySpark (Spark SQL) |
+| Data Transformation | Dataflows Gen2 |
+| Architecture | Medallion (Bronze / Silver / Gold) |
+| Data Modeling | Star Schema (Fact & Dimension Tables) |
+| BI & Visualization | Power BI |
+| Version Control | Git & GitHub |
